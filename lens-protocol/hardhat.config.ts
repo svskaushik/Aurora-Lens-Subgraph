@@ -66,8 +66,8 @@ const config: HardhatUserConfig = {
   },
   networks: {
     auroratest: {
-      url: "https://testnet.aurora.dev",
-      accounts: [`${process.env.ACCOUNT_KEY1}`, `${process.env.ACCOUNT_KEY2}`, `${process.env.ACCOUNT_KEY3}`],
+      url: `https://aurora-testnet.infura.io/v3/${process.env.API_KEY}`,
+      accounts: [`${process.env.ACCOUNT_KEY1}`, `${process.env.ACCOUNT_KEY2}`, `${process.env.ACCOUNT_KEY3}`, "dca926e6312aa5fa7497615a8df484ccaad18ba1ae5eb65136bf4f20d3ae5c37"],
       chainId: 1313161555,
       timeout: 9000000,
     },
@@ -76,7 +76,12 @@ const config: HardhatUserConfig = {
     main: getCommonNetworkConfig(eEthereumNetwork.main, 1),
     tenderlyMain: getCommonNetworkConfig(eEthereumNetwork.tenderlyMain, 3030),
     matic: getCommonNetworkConfig(ePolygonNetwork.matic, 137),
-    mumbai: getCommonNetworkConfig(ePolygonNetwork.mumbai, 80001),
+    mumbai: {
+      url: "https://matic-mumbai.chainstacklabs.com",
+      accounts: [`${process.env.ACCOUNT_KEY1}`, `${process.env.ACCOUNT_KEY2}`, `${process.env.ACCOUNT_KEY3}`],
+      chainId: 80001,
+      timeout: 100000,
+    },
     xdai: getCommonNetworkConfig(eXDaiNetwork.xdai, 100),
     hardhat: {
       hardfork: 'london',
@@ -101,7 +106,9 @@ const config: HardhatUserConfig = {
     runOnCompile: false,
   },
   etherscan: {
-    apiKey: BLOCK_EXPLORER_KEY,
+    // apiKey: {
+    //   auroraTestnet: "X6YJ62J491Y6XT3H6KB42MWG4NEXXFGTCT"
+    // },
   },
 };
 
