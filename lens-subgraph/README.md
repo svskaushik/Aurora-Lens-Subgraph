@@ -1,3 +1,1 @@
-# Subgraph for Lens Protocols
-
--In process-
+# Subgraph for Lens Protocol on Aurora
